@@ -2,12 +2,13 @@ import { React, useState } from 'react'
 import axios from 'axios'
 import { Button, Icon } from '@rneui/themed'
 import { View, Text, StyleSheet } from 'react-native'
+import { Api } from '../api'
 
 const WasteCard = ({ navigation, waste, key1 }) => {
 	const [data, setData] = useState([])
 	const handleDelete = async (id) => {
 		// await axios.delete(`http://192.168.0.104:5000/delete/:${id}`)
-		let message = await axios.delete(`http://192.168.43.171:5000/delete/${id}`)
+		let message = await axios.delete(`http://${Api}:5000/delete/${id}`)
 		console.log(message.data.message)
 		navigation.goBack()
 		const newData = data.filter((item) => item._id !== id)
@@ -27,7 +28,7 @@ const WasteCard = ({ navigation, waste, key1 }) => {
 				<Text style={styles.subtitle}>Cost: ${waste.cost}</Text>
 			</View>
 			<Button
-				title='Delete data'
+				// title='Delete data'
 				onPress={() => {
 					handleDelete(key1)
 				}}
@@ -38,7 +39,8 @@ const WasteCard = ({ navigation, waste, key1 }) => {
 					color: 'white',
 				}}
 				iconContainerStyle={{
-					marginRight: 10,
+					// marginRight: 1,
+					margin: 0,		
 				}}
 				titleStyle={{
 					fontWeight: '700',
@@ -49,8 +51,8 @@ const WasteCard = ({ navigation, waste, key1 }) => {
 					borderColor: 'transparent',
 					borderWidth: 0,
 					borderRadius: 30,
-					height: 50,
-					width: 250,
+					height: 35,
+					width: 50,
 				}}
 				containerStyle={{
 					width: 300,
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		padding: 10,
 		marginLeft: 7,
-		marginBottom: 10,
+		marginBottom: 25,
 	},
 	image: {
 		width: '100%',

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Icon } from '@rneui/themed'
 import { ScrollView, View, Text, TextInput, StyleSheet } from 'react-native'
+import { Api } from '../api'
 
 const AddWaste = ({ navigation }) => {
 	const [ID, setID] = useState('')
@@ -11,7 +12,8 @@ const AddWaste = ({ navigation }) => {
 	const [cost, setCost] = useState('')
 
 	const createWasteRecord = async () => {
-		const apiURL = 'http://192.168.43.171:5000/addWaste'
+		// const apiURL = 'http://192.168.43.171:5000/addWaste'
+		const apiURL = `http://${Api}:5000/addWaste`
 		try {
 			const wasteRecord = {
 				ID,

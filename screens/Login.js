@@ -14,10 +14,11 @@ import { Ionicons } from '@expo/vector-icons'
 import Checkbox from 'expo-checkbox'
 import Button from '../components/Button'
 import { StatusBar } from 'expo-status-bar'
+import { Api } from '../api'
 
 const Login = ({ navigation }) => {
 	// const apiURL = 'http://192.168.0.104:5000/login'
-	const apiURL = 'http://192.168.43.171:5000/login'
+	const apiURL = `http://${Api}:5000/login`
 	const [isPasswordShown, setIsPasswordShown] = useState(true)
 	const [isChecked, setIsChecked] = useState(false)
 	const [userData, setUserData] = useState([
@@ -171,21 +172,6 @@ const Login = ({ navigation }) => {
 					</View>
 				</View>
 
-				<View
-					style={{
-						flexDirection: 'row',
-						marginVertical: 6,
-					}}>
-					<Checkbox
-						style={{ marginRight: 8 }}
-						value={isChecked}
-						onValueChange={setIsChecked}
-						color={isChecked ? COLORS.primary : undefined}
-					/>
-
-					<Text>Remenber Me</Text>
-				</View>
-
 				<Button
 					title='Login'
 					filled
@@ -197,89 +183,6 @@ const Login = ({ navigation }) => {
 						marginBottom: 4,
 					}}
 				/>
-
-				<View
-					style={{
-						flexDirection: 'row',
-						alignItems: 'center',
-						marginVertical: 20,
-					}}>
-					<View
-						style={{
-							flex: 1,
-							height: 1,
-							backgroundColor: COLORS.grey,
-							marginHorizontal: 10,
-						}}
-					/>
-					<Text style={{ fontSize: 14 }}>Or Login with</Text>
-					<View
-						style={{
-							flex: 1,
-							height: 1,
-							backgroundColor: COLORS.grey,
-							marginHorizontal: 10,
-						}}
-					/>
-				</View>
-
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'center',
-					}}>
-					<TouchableOpacity
-						onPress={() => console.log('Pressed')}
-						style={{
-							flex: 1,
-							alignItems: 'center',
-							justifyContent: 'center',
-							flexDirection: 'row',
-							height: 52,
-							borderWidth: 1,
-							borderColor: COLORS.grey,
-							marginRight: 4,
-							borderRadius: 10,
-						}}>
-						<Image
-							source={require('../assets/facebook.png')}
-							style={{
-								height: 36,
-								width: 36,
-								marginRight: 8,
-							}}
-							resizeMode='contain'
-						/>
-
-						<Text>Facebook</Text>
-					</TouchableOpacity>
-
-					<TouchableOpacity
-						onPress={() => console.log('Pressed')}
-						style={{
-							flex: 1,
-							alignItems: 'center',
-							justifyContent: 'center',
-							flexDirection: 'row',
-							height: 52,
-							borderWidth: 1,
-							borderColor: COLORS.grey,
-							marginRight: 4,
-							borderRadius: 10,
-						}}>
-						<Image
-							source={require('../assets/google.png')}
-							style={{
-								height: 36,
-								width: 36,
-								marginRight: 8,
-							}}
-							resizeMode='contain'
-						/>
-
-						<Text>Google</Text>
-					</TouchableOpacity>
-				</View>
 
 				<View
 					style={{

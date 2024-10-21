@@ -2,11 +2,14 @@ import { React, useState, useEffect } from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import axios from 'axios'
 import WasteCard from './WasteCard'
+import { Api } from '../api'
+import { ScrollView } from 'react-native-gesture-handler'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const WasteList = ({ navigation }) => {
 	const [data, setData] = useState([])
 	// const apiURL = 'http://192.168.0.104:5000/getWaste'
-	const apiURL = 'http://192.168.43.171:5000/getWaste'
+	const apiURL = `http://${Api}:5000/getWaste`
 	useEffect(() => {
 		// Make a request to the server endpoint
 		axios
@@ -23,7 +26,8 @@ const WasteList = ({ navigation }) => {
 	}, [])
 	// Render the component with the data state
 	return (
-		<View style={styles.container}>
+		<GestureHandlerRootView>
+		<ScrollView style={styles.container}>
 			{data.map((data1) => (
 				<WasteCard
 					key={data1._id}
@@ -32,7 +36,8 @@ const WasteList = ({ navigation }) => {
 					key1={data1._id}
 				/>
 			))}
-		</View>
+		</ScrollView>
+		</GestureHandlerRootView>
 	)
 }
 
@@ -41,8 +46,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#f8f8ff',
 		marginTop: 40,
-		alignItems: 'flex-start',
-		justifyContent: 'flex-start',
+		// alignItems: 'flex-start',
+		// justifyContent: 'flex-start',
 	},
 })
 export default WasteList

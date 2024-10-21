@@ -32,7 +32,7 @@ const HomePage = ({ navigation }) => {
 							flexDirection: 'row',
 						}}>
 						<Image
-							source={require('../assets/logo2.png')}
+							source={require('../assets/log.jpg')}
 							style={{ width: 100, height: 100, borderRadius: 100 }}
 						/>
 						<Text
@@ -80,7 +80,7 @@ const HomePage = ({ navigation }) => {
 							height: 50,
 							width: 250,
 						}}
-						containerStyle={{
+						containerStyle={{ 
 							width: 300,
 							marginHorizontal: 26,
 							marginVertical: 10,
